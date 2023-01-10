@@ -14,4 +14,4 @@ ENV PYTHONUNBUFFERED=1
 
 # Test this to "to simply change the heartbeat directory to a memory-mapped directory inside your docker container"
 # As described here https://luis-sena.medium.com/creating-the-perfect-python-dockerfile-51bdec41f1c8
-CMD ["gunicorn","-b", "0.0.0.0:5000", "-w", "2", "-k", "gevent", "--worker-tmp-dir", "/dev/shm", "run:app", "--timeout", "1000"]
+CMD ["gunicorn","-b", "0.0.0.0:5000", "-w", "2", "-k", "gevent", "--worker-tmp-dir", "/dev/shm", "wsgi:app", "--timeout", "1000"]
