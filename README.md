@@ -19,7 +19,7 @@ The provided json files looked as below after initial reading with pandas:
 
 ![input_data](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/input_data.jpg?raw=true)
 
-We call each case a distinct offer is presented to a customer an "instance" of that offer. Part 1 of this analysis contains the data wrangling steps that aggregate the events with profile and offer attributes for each offer presented to each customer as below; so that the relationships between them can be investigated.
+We call each case a distinct offer is presented to a customer an "instance" of that offer. We have aggregated the events with profile and offer attributes for each offer presented to each customer as below; so that the relationships between them can be investigated.
 
 In the resulting dataset, each row also contains information derived from the event logs about the offer instance including when it is presented, when it is viewed, when it is expired, daily average amount the customer spent after viewing the offer, and how that compares to other periods.
 
