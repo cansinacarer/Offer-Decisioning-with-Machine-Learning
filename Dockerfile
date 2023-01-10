@@ -4,8 +4,9 @@ RUN apt-get -y update
 RUN apt-get install --no-install-recommends -y python3.10 python3-dev python3-venv python3-pip python3-wheel build-essential libmysqlclient-dev && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 ADD web-application /web-application
+ADD requirements.txt /web-application/requirements.txt
 WORKDIR /web-application
-RUN pip install -r ../requirements.txt
+RUN pip install -r requirements.txt
 EXPOSE 5000
 
 # make sure all messages always reach console
