@@ -13,13 +13,11 @@
 
 We hypothesize that the amount of this influence each offer has on spending amount is a function of the customer profile attributes and offer attributes.
 
-    WHAT STATISTICAL METRICS USED TO MEASURE THE MODEL PERFORMANCE? Accuracy score and/or F-score?
-
 ## Data Preprocesing
 
 The provided json files looked as below after initial reading with pandas:
 
-![input_data](https://github.com/cansinacarer/API-Endpoint-Test/blob/main/img/input_data.jpg?raw=true)
+![input_data](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/input_data.jpg?raw=true)
 
 We call each case a distinct offer is presented to a customer an "instance" of that offer. Part 1 of this analysis contains the data wrangling steps that aggregate the events with profile and offer attributes for each offer presented to each customer as below; so that the relationships between them can be investigated.
 
@@ -27,7 +25,24 @@ In the resulting dataset, each row also contains information derived from the ev
 
 Below is a transposed sample from this dataset
 
-![offer-instance-clean](https://github.com/cansinacarer/API-Endpoint-Test/blob/main/img/offer-instance-clean.jpg?raw=true)
+![offer-instance-clean](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/offer-instance-clean.jpg?raw=true)
+
+## Data Exploration and Visualization
+
+## Modeling
+
+## Running the Web Application and the Notebook Locally
+
+### Web Application
+
+A continuous deployment pipeline is set up to always have the version of the web application seen here be running at this address:
+[https://offer-decisioning-starbucks.montreal.cansin.net/](https://offer-decisioning-starbucks.montreal.cansin.net/).
+
+If you want to test it locally, navigate into the web-application folder, create and activate a virtual environment, install dependencies from `requirements.txt`, then run `run.py` and open to the URL shown in the terminal in a browser.
+
+### Notebook
+
+As described above, install the dependencies in a virtual environment, activate it, and make sure you have the virtual environment selected as the kernel.
 
 ## Data Dictionary
 
