@@ -43,7 +43,7 @@ Below is a transposed sample from this dataset
 
 ## Implementation: Web Application
 
-A continuous deployment pipeline is set up to always have the version of the web application seen in this repository will be running at this address:
+A continuous deployment pipeline is set up to always have the version of the web application seen in this repository be running at this address:
 [https://offer-decisioning-starbucks.montreal.cansin.net/](https://offer-decisioning-starbucks.montreal.cansin.net/).
 
 ### Running the Web Application and the Notebook 
