@@ -14,11 +14,11 @@ We are given three data files which contain simulated data that mimics customer 
 
 In order to decide which offer should be presented to which customer, we need to know which offer was presented to which customer during the experiment period and what the result was; so that we can predict the offer that would influence a customer's spending behavior the most.
 
-We consider the average daily amount a customer spends without having seen any offers as the baseline. When the customer is presented with an offer, we consider them "influenced" if they have viewed that offer.
+We consider the average daily amount a customer spends without having seen any offers as the baseline. When the customer is presented with an offer, we consider them "influenced", if they have viewed that offer.
 
 We define offer influence as the difference between the amount a customer spends during an offer and the baseline amount they spend in periods with no offer.
 
-We hypothesize that the amount of the influence each offer has on spending amount is a function of the customer profile attributes and offer attributes. We will try different regressor algorithms to find this function so that we can calculate the influence of future offers for a given set of customer and offer attributes.
+We hypothesize that the amount of the influence each offer has on spending amount is a function of the customer profile attributes and offer attributes. We will try different regression algorithms to find this function and calculate the influence of future offers for a given set of customer and offer attributes.
 
 ### Metrics
 
@@ -26,8 +26,6 @@ In order to decide which offer should be presented to which customer, we need to
 
 -   `offer_spending_rate`: The daily average spending amount of a customer during the periods when they have at least one valid offer they have seen.
 -   `no_offer_spending_rate`: The daily average spending amount of a customer across all days when they do have an valid offer or they have not seen the active offer they have.
-
-We hypothesize that the amount of this influence each offer has on spending amount is a function of the customer profile attributes and offer attributes.
 
 ## Data Preprocesing
 
