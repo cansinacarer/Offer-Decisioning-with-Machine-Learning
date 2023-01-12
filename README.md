@@ -90,9 +90,9 @@ The deployed application is runs the latest version from this repository using a
 
 ## Other Notes
 
-1. Please see the notebook file for the conclusions.
+- Please see the notebook file for the steps of this analysis and the conclusions.
 
-2. This project is submitted in partial fulfillment of the Data Scientist Nanodegree Program from Udacity.
+- This project is submitted in partial fulfillment of the Data Scientist Nanodegree Program from Udacity.
 
 ### Running the Web Application and the Notebook
 
