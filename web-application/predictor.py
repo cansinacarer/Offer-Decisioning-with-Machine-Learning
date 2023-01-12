@@ -2,7 +2,7 @@ import pandas as pd
 import joblib
 
 # Load the model
-model = joblib.load("sv_model.pkl")
+model = joblib.load(r"model.pkl")
 
 # Available offers
 offers = [
@@ -171,8 +171,13 @@ def predict_from_request(offer, request):
             "customer_profile_age",
             "customer_gender_M",
             "customer_gender_F",
-            "customer_no_offer_spending_rate",
-            "customer_offer_spending_rate",
+            "customer_total_spending",
+            "customer_total_no_offer_spending",
+            "customer_total_offer_spending",
+            "customer_days_without_offer",
+            "customer_days_with_offer",
+            "customer_average_no_offer_spending_rate",
+            "customer_average_offer_spending_rate",
         ]
     ]
 
