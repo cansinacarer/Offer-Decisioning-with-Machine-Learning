@@ -57,7 +57,7 @@ The provided json files looked as below when first read with pandas:
 
 In the resulting dataset, each row also contains information derived from the event logs about the presented offer including when it is presented, when it is viewed, when it is expired, daily average amount the customer spent after viewing the offer, and how that compares to other periods.
 
-Below is a transposed sample from this dataset
+Below is a transposed sample from the aggregated dataset with variables derived from the tables above.
 
 ![offer-instance-clean](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/presented-offers-clean.jpg?raw=true)
 
