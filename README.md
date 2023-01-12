@@ -27,35 +27,56 @@ We consider the average daily amount a customer spends without having seen any o
 
 ## Data Preprocesing
 
-The provided json files looked as below after initial reading with pandas:
+The provided json files looked as below when first read with pandas:
 
-![input_data](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/input_data.jpg?raw=true)
+| reward | channels                     | difficulty | duration | offer_type    | id                               |
+| :----- | :--------------------------- | :--------- | :------- | :------------ | :------------------------------- |
+| 10     | [email, mobile, social]      | 10         | 7        | bogo          | ae264e3637204a6fb9bb56bc8210ddfd |
+| 10     | [web, email, mobile, social] | 10         | 5        | bogo          | 4d5c57ea9a6940dd891ad53e9dbe8da0 |
+| 0      | [web, email, mobile]         | 0          | 4        | informational | 3f207df678b143eea3cee63160fa8bed |
+| 5      | [web, email, mobile]         | 5          | 7        | bogo          | 9b98b8c7a33c4b65b9aebfe6a799e6d9 |
+| 5      | [web, email]                 | 20         | 10       | discount      | 0b1e1539f2cc45b7b9fa7c272da2e1d7 |
+
+| gender | age | id                               | became_member_on | income |
+| :----- | :-- | :------------------------------- | :--------------- | :----- |
+| M      | 44  | 1a6441a8ccd74a81a388841d357b8c0d | 20180108         | 67000  |
+| M      | 62  | 81e459ab24434db99f657b928338c88c | 20171111         | 91000  |
+| F      | 61  | fbb3c6ad80b04d3a94c666a2f08f2a2e | 20170916         | 96000  |
+| F      | 85  | 19446b361caa43de84c2aed517457a47 | 20160927         | 103000 |
+| O      | 42  | 8ead309bb7254edbab114c8837cd54b2 | 20170926         | 63000  |
+
+| person                           | event          | value                                            | time |
+| :------------------------------- | :------------- | :----------------------------------------------- | :--- |
+| e69130c406cf4e3fbb0168b535309b96 | offer received | {'offer id': '9b98b8c7a33c4b65b9aebfe6a799e6d9'} | 0    |
+| 23bc15e276d247669fd7d1c08a8fb678 | offer viewed   | {'offer id': 'f19421c1d4aa40978ebb69ca19b0e20d'} | 144  |
+| bafc2350ece84692b0db74a6130a213c | transaction    | {'amount': 4.17}                                 | 234  |
+| f2b3ad312ea343f483ea8a3db41b3a47 | transaction    | {'amount': 0.85}                                 | 666  |
+| 7ffb3bc618ad453b9bce311ec88e481d | offer viewed   | {'offer id': 'fafdcd668e3743c1bb461111dcafc2a4'} | 366  |
 
 In the resulting dataset, each row also contains information derived from the event logs about the presented offer including when it is presented, when it is viewed, when it is expired, daily average amount the customer spent after viewing the offer, and how that compares to other periods.
 
 Below is a transposed sample from this dataset
 
-![offer-instance-clean](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/offer-instance-clean.jpg?raw=true)
+![offer-instance-clean](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/presented-offers-clean.jpg?raw=true)
 
 ## Modeling
 
 We have used offer attributes and customer profile attributes shown in the image above as independent variables and the offer influence as the dependent variable. The algorithms we have tested and their performances are shown below. We have chosen CatBoost Regressor as it performed the best against all of our metrics. Based on the Mean Absolute Error of this model, it will be able to predict the `offer_influence` with an average of $3.18 error for any given set of profile attributes and offer attributes.
 
-| |Mean Absolute Error (MAE)|Mean Squared Error (MSE)|Root Mean Square Error (RMSE)|Explained Variance (R^2 Score)|
-|:----|:----|:----|:----|:----|
-|CatBoost Regressor|3.186|55.833|1.785|0.407|
-|Bayesian Ridge Regression|3.186|55.833|1.785|0.407|
-|Linear Regression|3.187|55.840|1.785|0.407|
-|Elastic Net Regression|3.230|56.228|1.797|0.403|
-|Gradient Boosting Regressor|3.243|63.045|1.801|0.331|
-|Light GBM Regressor|3.293|71.057|1.815|0.246|
-|Random Forest Regressor|3.711|78.179|1.926|0.170|
-|MLP Regressor|5.645|78.726|2.376|0.165|
-|XGBoost Regressor|3.423|87.035|1.850|0.076|
-|Support Vector Regressor|4.371|93.839|2.091|0.004|
-|Decision Tree Regressor|4.670|150.574|2.161|-0.598|
-|Stochastic Gradient Descent Regression|4.26E+17|2.00E+35|652480033.3|-2.12E+33|
-
+|                                        | Mean Absolute Error (MAE) | Mean Squared Error (MSE) | Root Mean Square Error (RMSE) | Explained Variance (R^2 Score) |
+| :------------------------------------- | :------------------------ | :----------------------- | :---------------------------- | :----------------------------- |
+| CatBoost Regressor                     | 3.186                     | 55.833                   | 1.785                         | 0.407                          |
+| Bayesian Ridge Regression              | 3.186                     | 55.833                   | 1.785                         | 0.407                          |
+| Linear Regression                      | 3.187                     | 55.840                   | 1.785                         | 0.407                          |
+| Elastic Net Regression                 | 3.230                     | 56.228                   | 1.797                         | 0.403                          |
+| Gradient Boosting Regressor            | 3.243                     | 63.045                   | 1.801                         | 0.331                          |
+| Light GBM Regressor                    | 3.293                     | 71.057                   | 1.815                         | 0.246                          |
+| Random Forest Regressor                | 3.711                     | 78.179                   | 1.926                         | 0.170                          |
+| MLP Regressor                          | 5.645                     | 78.726                   | 2.376                         | 0.165                          |
+| XGBoost Regressor                      | 3.423                     | 87.035                   | 1.850                         | 0.076                          |
+| Support Vector Regressor               | 4.371                     | 93.839                   | 2.091                         | 0.004                          |
+| Decision Tree Regressor                | 4.670                     | 150.574                  | 2.161                         | -0.598                         |
+| Stochastic Gradient Descent Regression | 4.26E+17                  | 2.00E+35                 | 652480033.3                   | -2.12E+33                      |
 
 ### Model Implementation: Web Application
 
@@ -71,7 +92,7 @@ The deployed application is runs the latest version from this repository using a
 
 2. This project is submitted in partial fulfillment of the Data Scientist Nanodegree Program from Udacity.
 
-### Running the Web Application and the Notebook 
+### Running the Web Application and the Notebook
 
 If you want to test it locally, navigate into the web-application folder, create and activate a virtual environment, install dependencies from `requirements.txt`, then run `run.py` and open to the URL shown in the terminal in a browser.
 
