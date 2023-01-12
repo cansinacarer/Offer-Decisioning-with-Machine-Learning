@@ -63,8 +63,7 @@ We have implemented the selected model in an offer decisioning web application. 
 
 This application is deployed at [https://offer-decisioning-starbucks.montreal.cansin.net](https://offer-decisioning-starbucks.montreal.cansin.net). You can see the code for this application in the `web-application` directory of this repository.
 
-A continuous deployment pipeline is set up to always have the version of the web application seen in this repository be running at this address:
-[https://offer-decisioning-starbucks.montreal.cansin.net/](https://offer-decisioning-starbucks.montreal.cansin.net/).
+The deployed application is runs the latest version from this repository using a continuous deployment pipeline.
 
 ## Other Notes
 
