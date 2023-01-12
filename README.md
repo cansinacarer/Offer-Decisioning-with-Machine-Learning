@@ -41,22 +41,16 @@ Below is a transposed sample from this dataset
 
 ![offer-instance-clean](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/offer-instance-clean.jpg?raw=true)
 
-## Data Exploration and Visualization
+## Implementation: Web Application
 
-## Modeling
-
-## Running the Web Application and the Notebook Locally
-
-### Web Application
-
-A continuous deployment pipeline is set up to always have the version of the web application seen here be running at this address:
+A continuous deployment pipeline is set up to always have the version of the web application seen in this repository will be running at this address:
 [https://offer-decisioning-starbucks.montreal.cansin.net/](https://offer-decisioning-starbucks.montreal.cansin.net/).
+
+### Running the Web Application and the Notebook 
 
 If you want to test it locally, navigate into the web-application folder, create and activate a virtual environment, install dependencies from `requirements.txt`, then run `run.py` and open to the URL shown in the terminal in a browser.
 
-### Notebook
-
-As described above, install the dependencies in a virtual environment, activate it, and make sure you have the virtual environment selected as the kernel.
+While running the notebook, make sure you have the virtual environment selected as the kernel.
 
 ## Data Dictionary
 
