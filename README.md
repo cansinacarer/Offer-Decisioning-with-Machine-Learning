@@ -14,26 +14,24 @@ We are given three data files which contain simulated data that mimics customer 
 
 In order to decide which offer should be presented to which customer, we need to know which offer was presented to which customer during the experiment period and what the result was; so that we can predict the offer that would influence a customer's spending behavior the most.
 
-We consider the average daily amount a customer spends without having seen any offers as the baseline. When the customer is presented with an offer, we consider them "influenced", if they have viewed that offer.
+We call each case a distinct offer is presented to a customer a "presented offer". We have aggregated the events with profile and offer attributes for each offer presented to each customer as below; so that the relationships between them can be investigated.
 
-We define offer influence as the difference between the amount a customer spends during an offer and the baseline amount they spend in periods with no offer.
+#### Metrics
+
+We define offer influence as the difference between the amount a customer spends during an offer and the baseline amount they spend in periods with no offer viewed. We called the metric for measuring this behavior difference `offer_influence`. It is calculated as the difference between the following two variables we derived from the event logs provided in the `transcript.json`:
+
+-   `offer_spending_rate`: The daily average spending amount of a customer during the period after they have seen a given offer. This quantity is unique for each presented offer.
+-   `average_no_offer_spending_rate`: The daily average spending amount of a customer across all days when they do have an valid offer or they have not seen the active offer they have. This quantity is unique for each customer.
 
 We hypothesize that the amount of the influence each offer has on spending amount is a function of the customer profile attributes and offer attributes. We will try different regression algorithms to find this function and calculate the influence of future offers for a given set of customer and offer attributes.
 
-### Metrics
-
-In order to decide which offer should be presented to which customer, we need to know the offer that would influence a particular customer's spending behavior the most. Our metric in measuring this behavior difference will be `offer_influence`. This is calculated as the difference between the following two variables we derived from the event logs provided in the `transcript.json`:
-
--   `offer_spending_rate`: The daily average spending amount of a customer during the periods when they have at least one valid offer they have seen.
--   `no_offer_spending_rate`: The daily average spending amount of a customer across all days when they do have an valid offer or they have not seen the active offer they have.
+We consider the average daily amount a customer spends without having seen any offers as the baseline. When the customer is presented with an offer, we consider them "influenced" only during the period between when they have viewed that offer until that offer expires.
 
 ## Data Preprocesing
 
 The provided json files looked as below after initial reading with pandas:
 
 ![input_data](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/input_data.jpg?raw=true)
-
-We call each case a distinct offer is presented to a customer a "presented offer". We have aggregated the events with profile and offer attributes for each offer presented to each customer as below; so that the relationships between them can be investigated.
 
 In the resulting dataset, each row also contains information derived from the event logs about the presented offer including when it is presented, when it is viewed, when it is expired, daily average amount the customer spent after viewing the offer, and how that compares to other periods.
 
