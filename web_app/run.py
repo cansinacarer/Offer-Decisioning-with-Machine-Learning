@@ -4,7 +4,7 @@ from wtforms import (
     Form,
     validators,
     IntegerField,
-    BooleanField,
+    StringField,
     FloatField,
 )
 import predictor
@@ -25,8 +25,7 @@ class CustomerAttributesForm(Form):
         "Customer Profile Age",
         [validators.NumberRange(min=0, max=36500), validators.InputRequired()],
     )
-    customer_gender_M = BooleanField("Customer Male?")
-    customer_gender_F = BooleanField("Customer Female?")
+    customer_gender = StringField("Gender")
     customer_total_spending = IntegerField(
         "Customer Total Spending",
         [validators.NumberRange(min=0, max=1000000), validators.InputRequired()],
@@ -49,25 +48,43 @@ class CustomerAttributesForm(Form):
     )
     customer_average_no_offer_spending_rate = FloatField(
         "Customer Average No Offer Spending Rate",
-        [validators.NumberRange(min=0, max=1), validators.InputRequired()],
+        [validators.NumberRange(min=0, max=1000), validators.InputRequired()],
     )
     customer_average_offer_spending_rate = FloatField(
         "Customer Average Offer Spending Rate",
-        [validators.NumberRange(min=0, max=1), validators.InputRequired()],
+        [validators.NumberRange(min=0, max=1000), validators.InputRequired()],
     )
 
 
 @app.route("/", methods=["get", "post"])
 def index():
-    form = CustomerAttributesForm()
+    form = CustomerAttributesForm(request.form)
 
     if request.method == "POST" and form.validate():
+        # Read the form inputs
+        customer_fields = request.form.to_dict()
+
+        # Convert html select options to model's binary variables
+        customer_fields["customer_gender_M"] = (
+            1 if customer_fields["customer_gender"] == "male" else 0
+        )
+        customer_fields["customer_gender_F"] = (
+            1 if customer_fields["customer_gender"] == "female" else 0
+        )
+
+        # Remove the old gender variable that came from html select
+        customer_fields.pop("customer_gender")
+
         # Save predictions to a temporary copy of the offers list
+        try:
+            del temp_offers
+        except:
+            pass
         temp_offers = predictor.offers
         offer_influence = []
         for offer in temp_offers:
             offer_influence.append(
-                predictor.predict_from_request(offer, request.form.to_dict())
+                predictor.predict_from_request(offer, customer_fields)
             )
 
         # Add the result to the dictionary that builds the offers table

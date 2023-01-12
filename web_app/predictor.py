@@ -144,12 +144,6 @@ offers = [
 
 # Predict with the customer attributes received from the form
 def predict_from_request(offer, request):
-    # Convert html select options to model's binary variables
-    request["customer_gender_M"] = 1 if request["customer_gender"] == "male" else 0
-    request["customer_gender_F"] = 1 if request["customer_gender"] == "female" else 0
-
-    # Remove the old gender variable that came from html select
-    request.pop("customer_gender")
 
     # Merge the offer attributes with profile attributes
     offer.update(request)

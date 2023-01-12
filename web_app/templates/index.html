@@ -25,20 +25,20 @@
 			</div>
 			<div class="row my-4 text-center">
 				<div class="col-12">
+					<!-- Begin: message -->
 					<div class="alert alert-{{ message[0] }}">
 						{{ message[1] | safe }}
 					</div>
-					{% if form.errors %}
-					<div class="alert alert-error">
-						<ul class="errors">
-							{% for field_name, field_errors in
-							form.errors|dictsort if field_errors %} {% for error
-							in field_errors %}
-							<li>{{ form[field_name].label }}: {{ error }}</li>
-							{% endfor %} {% endfor %}
-						</ul>
+					<!-- End: message -->
+					<!-- Begin: form errors -->
+					{% if form.errors %} {% for field_name, field_errors in
+					form.errors|dictsort if field_errors %} {% for error in
+					field_errors %}
+					<div class="alert alert-danger">
+						Error in field {{ form[field_name].label }}: {{ error }}
 					</div>
-					{% endif %}
+					{% endfor %} {% endfor %} {% endif %}
+					<!-- End: form errors -->
 				</div>
 			</div>
 			{% if message[0] == 'primary' %}
@@ -67,17 +67,53 @@
 						</div>
 					</div>
 					<div class="mb-3 row">
-						{{ form.customer_gender_M.label(class="col-md-8
-						col-form-label") }}
+						<div class="col-md-8 col-form-label">Gender</div>
 						<div class="col-md-4">
-							{{ form.customer_gender_M(class="form-control") }}
-						</div>
-					</div>
-					<div class="mb-3 row">
-						{{ form.customer_gender_F.label(class="col-md-8
-						col-form-label") }}
-						<div class="col-md-4">
-							{{ form.customer_gender_F(class="form-control") }}
+							<div class="form-check">
+								<input
+									class="form-check-input"
+									type="radio"
+									name="customer_gender"
+									id="customer_gender_F"
+									value="female"
+								/>
+								<label
+									class="form-check-label"
+									for="customer_gender_F"
+								>
+									Female
+								</label>
+							</div>
+							<div class="form-check">
+								<input
+									class="form-check-input"
+									type="radio"
+									name="customer_gender"
+									id="customer_gender_M"
+									value="male"
+								/>
+								<label
+									class="form-check-label"
+									for="customer_gender_M"
+								>
+									Male
+								</label>
+							</div>
+							<div class="form-check">
+								<input
+									class="form-check-input"
+									type="radio"
+									name="customer_gender"
+									id="customer_gender_O"
+									value="o"
+								/>
+								<label
+									class="form-check-label"
+									for="customer_gender_O"
+								>
+									Other
+								</label>
+							</div>
 						</div>
 					</div>
 					<div class="mb-3 row">
@@ -169,6 +205,11 @@
 					</div>
 				</div>
 			</div>
+			<div class="row my-4">
+				<div class="col-12 text-center">
+					<a href="/" class="btn btn-primary">Try another customer</a>
+				</div>
+			</div>
 			{% endif %}
 		</div>
 		<script
@@ -182,6 +223,8 @@
 			crossorigin="anonymous"
 		></script>
 		<script>
+			         // Load offers table from the passed json
+
 			let offers = {{ offers | safe }};
 
 			function generateTableHead(table, data) {
@@ -210,25 +253,6 @@
 			let data = Object.keys(offers[0]);
 			generateTableHead(table, data);
 			generateTable(table, offers);
-
-			// Add new offer
-			// 1. Add to array
-			// new_offer = {
-			// 	offer_id: "9b98b8c7a33c4b65b9aebfe6a799e6d9",
-			// 	offer_reward: 5,
-			// 	offer_difficulty: 5,
-			// 	offer_duration: 168,
-			// 	channel_email: 1,
-			// 	channel_mobile: 1,
-			// 	channel_social: 0,
-			// 	channel_web: 1,
-			// 	offer_type_bogo: 1,
-			// 	offer_type_discount: 0,
-			// 	offer_type_informational: 0,
-			// };
-			// 2. rebuild the table
-
-			// 3. clear the form
 		</script>
 	</body>
 </html>
