@@ -1,8 +1,13 @@
 import pandas as pd
 import joblib
+import sys
+import os
 
-# Load the model
-model = joblib.load(r"model.pkl")
+
+# Load the pickled model
+base_dir = os.path.dirname(__file__)  # Path to loader.py
+pickled_model = os.path.join(base_dir, "model.pkl")
+model = joblib.load(pickled_model)
 
 # Available offers
 offers = [

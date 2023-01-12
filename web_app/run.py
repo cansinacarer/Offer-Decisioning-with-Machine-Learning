@@ -1,5 +1,5 @@
 import pandas as pd
-from flask import render_template, request
+from flask import Flask, render_template, request
 from wtforms import (
     Form,
     validators,
@@ -7,8 +7,9 @@ from wtforms import (
     BooleanField,
     FloatField,
 )
-from web_app import predictor
-from web_app import app
+import predictor
+
+app = Flask(__name__)
 
 
 class CustomerAttributesForm(Form):
