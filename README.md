@@ -6,7 +6,9 @@ Once every few days, Starbucks sends out an offer to users of the mobile app. An
 
 ## Problem Statement
 
-We are given three data files which contain simulated data that mimics customer behavior on the Starbucks rewards mobile app. Our task is to use the data to identify which customer which receive which offer. We will create a machine learning model that predicts the influence of a given offer on the spending behavior of a given customer, based on the offer and customer attributes. Then, we will implement this model in a web application so that when a user enters customer attributes, the application predicts influence of each offer for that customer and recommends the best one.
+We are given three data files which contain simulated data that mimics customer behavior on the Starbucks rewards mobile app. Our task is to use the data to identify which customer which receive which offer.
+
+We will create a machine learning model that predicts the influence of a given offer on the spending behavior of a given customer, based on the offer and customer attributes. Then, we will implement this model in a web application so that when a user enters customer attributes, the application predicts influence of each offer for that customer and recommends the best one.
 
 ## Methodology
 
