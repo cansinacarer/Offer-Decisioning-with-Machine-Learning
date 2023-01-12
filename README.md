@@ -1,22 +1,20 @@
 # Starbucks Offer Analysis
 
-## Background
-
-### Project Motivation
+## Project Motivation
 
 Once every few days, Starbucks sends out an offer to users of the mobile app. An offer can be merely an advertisement for a drink or an actual offer such as a discount or BOGO (buy one get one free). Some users might not receive any offer during certain weeks. There are three types of offers that can be sent: buy-one-get-one (BOGO), discount, and informational. In a BOGO offer, a user needs to spend a certain amount to get a reward equal to that threshold amount. In a discount, a user gains a reward equal to a fraction of the amount spent. In an informational offer, there is no reward, but neither is there a requisite amount that the user is expected to spend. Offers can be delivered via multiple channels.
 
-### Problem Statement
+## Problem Statement
 
 We are given three data files which contain simulated data that mimics customer behavior on the Starbucks rewards mobile app. Our task is to use the data to identify which groups of people are most responsive to each type of offer, and how best to present each type of offer.
 
-### Methodology
+## Methodology
 
 In order to decide which offer should be presented to which customer, we need to know which offer was presented to which customer during the experiment period and what the result was; so that we can predict the offer that would influence a customer's spending behavior the most.
 
 We call each case a distinct offer is presented to a customer a "presented offer". We have aggregated the events with profile and offer attributes for each offer presented to each customer as below; so that the relationships between them can be investigated.
 
-#### Metrics
+### Metrics
 
 We define offer influence as the difference between the amount a customer spends during an offer and the baseline amount they spend in periods with no offer viewed. We called the metric for measuring this behavior difference `offer_influence`. It is calculated as the difference between the following two variables we derived from the event logs provided in the `transcript.json`:
 
@@ -39,10 +37,19 @@ Below is a transposed sample from this dataset
 
 ![offer-instance-clean](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/offer-instance-clean.jpg?raw=true)
 
-## Implementation: Web Application
+## Modeling
+
+We have used offer attributes and customer profile attributes shown in the image above as independent variables and the offer influence as the dependent variable. The algorithms we have tested and their performances are shown below.
+
+
+## Model Implementation: Web Application
 
 A continuous deployment pipeline is set up to always have the version of the web application seen in this repository be running at this address:
 [https://offer-decisioning-starbucks.montreal.cansin.net/](https://offer-decisioning-starbucks.montreal.cansin.net/).
+
+## Conclusion
+
+## Other Notes
 
 ### Running the Web Application and the Notebook 
 
@@ -50,9 +57,9 @@ If you want to test it locally, navigate into the web-application folder, create
 
 While running the notebook, make sure you have the virtual environment selected as the kernel.
 
-## Data Dictionary
+### Data Dictionary
 
-### profile.json
+#### profile.json
 
 Rewards program users (17000 users x 5 fields)
 
@@ -62,7 +69,7 @@ Rewards program users (17000 users x 5 fields)
 -   became_member_on: (date) format YYYYMMDD
 -   income: (numeric)
 
-### portfolio.json
+#### portfolio.json
 
 Offers sent during 30-day test period (10 offers x 6 fields)
 
@@ -73,7 +80,7 @@ Offers sent during 30-day test period (10 offers x 6 fields)
 -   offer_type: (string) bogo, discount, informational
 -   id: (string/hash)
 
-### transcript.json
+#### transcript.json
 
 Event log (306648 events x 4 fields)
 
