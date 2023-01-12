@@ -6,13 +6,15 @@ Once every few days, Starbucks sends out an offer to users of the mobile app. An
 
 ## Problem Statement
 
-We are given three data files which contain simulated data that mimics customer behavior on the Starbucks rewards mobile app. Our task is to use the data to identify which groups of people are most responsive to each type of offer, and how best to present each type of offer.
+We are given three data files which contain simulated data that mimics customer behavior on the Starbucks rewards mobile app. Our task is to use the data to identify which customer which receive which offer.
 
 ## Methodology
 
-In order to decide which offer should be presented to which customer, we need to know which offer was presented to which customer during the experiment period and what the result was; so that we can predict the offer that would influence a customer's spending behavior the most.
+In order to decide which offer should be presented to which customer, we need to know which offer was presented to which customer during the experiment period and what the result was.
 
 We call each case a distinct offer is presented to a customer a "presented offer". We have aggregated the events with profile and offer attributes for each offer presented to each customer as below; so that the relationships between them can be investigated.
+
+We created a machine learning model that predicts the influence of a given offer on the spending behavior of a given customer, based on the offer and customer attributes. Then, we implemented this model in a web application so that when a user enters customer attributes, the application predicts influence of each offer for that customer and recommends the best one.
 
 ### Metrics
 
@@ -55,13 +57,14 @@ The provided json files looked as below when first read with pandas:
 
 In the resulting dataset, each row also contains information derived from the event logs about the presented offer including when it is presented, when it is viewed, when it is expired, daily average amount the customer spent after viewing the offer, and how that compares to other periods.
 
-Below is a transposed sample from this dataset
+### Data Preprocesing Result
+Below is a transposed sample from the aggregated dataset with variables derived from the tables above.
 
 ![offer-instance-clean](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/presented-offers-clean.jpg?raw=true)
 
 ## Modeling
 
-We have used offer attributes and customer profile attributes shown in the image above as independent variables and the offer influence as the dependent variable. The algorithms we have tested and their performances are shown below. We have chosen CatBoost Regressor as it performed the best against all of our metrics. Based on the Mean Absolute Error of this model, it will be able to predict the `offer_influence` with an average of $3.18 error for any given set of profile attributes and offer attributes.
+We have used offer attributes and customer profile attributes shown in the image above as independent variables and the offer influence as the dependent variable. The algorithms we have tested and their performances are shown below.
 
 |                                        | Mean Absolute Error (MAE) | Mean Squared Error (MSE) | Root Mean Square Error (RMSE) | Explained Variance (R^2 Score) |
 | :------------------------------------- | :------------------------ | :----------------------- | :---------------------------- | :----------------------------- |
@@ -78,6 +81,8 @@ We have used offer attributes and customer profile attributes shown in the image
 | Decision Tree Regressor                | 4.670                     | 150.574                  | 2.161                         | -0.598                         |
 | Stochastic Gradient Descent Regression | 4.26E+17                  | 2.00E+35                 | 652480033.3                   | -2.12E+33                      |
 
+We have chosen CatBoost Regressor as it performed the best against all of our metrics. Based on the Mean Absolute Error of this model, it will be able to predict the `offer_influence` with an average of $3.18 error for any given set of profile attributes and offer attributes.
+
 ### Model Implementation: Web Application
 
 We have implemented the selected model in an offer decisioning web application. This application allows the user to input a customer profile details and the application shows the user the offer that has the highest predicted influence for that profile.
@@ -88,9 +93,9 @@ The deployed application is runs the latest version from this repository using a
 
 ## Other Notes
 
-1. Please see the notebook file for the conclusions.
+- Please see the notebook file for the steps of this analysis and the conclusions.
 
-2. This project is submitted in partial fulfillment of the Data Scientist Nanodegree Program from Udacity.
+- This project is submitted in partial fulfillment of the Data Scientist Nanodegree Program from Udacity.
 
 ### Running the Web Application and the Notebook
 
