@@ -5,7 +5,7 @@ RUN apt-get install --no-install-recommends -y python3.10 python3-dev python3-ve
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 ADD web-application /web-application
 ADD requirements.txt /web-application/requirements.txt
-WORKDIR /web-application
+WORKDIR /web_app
 RUN pip install -r requirements.txt
 EXPOSE 5000
 
