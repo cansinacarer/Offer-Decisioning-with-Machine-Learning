@@ -64,7 +64,7 @@ Below is a transposed sample from the aggregated dataset with variables derived 
 
 ## Modeling
 
-We have used offer attributes and customer profile attributes shown in the image above as independent variables and the offer influence as the dependent variable. The algorithms we have tested and their performances are shown below. We have chosen CatBoost Regressor as it performed the best against all of our metrics. Based on the Mean Absolute Error of this model, it will be able to predict the `offer_influence` with an average of $3.18 error for any given set of profile attributes and offer attributes.
+We have used offer attributes and customer profile attributes shown in the image above as independent variables and the offer influence as the dependent variable. The algorithms we have tested and their performances are shown below.
 
 |                                        | Mean Absolute Error (MAE) | Mean Squared Error (MSE) | Root Mean Square Error (RMSE) | Explained Variance (R^2 Score) |
 | :------------------------------------- | :------------------------ | :----------------------- | :---------------------------- | :----------------------------- |
@@ -80,6 +80,8 @@ We have used offer attributes and customer profile attributes shown in the image
 | Support Vector Regressor               | 4.371                     | 93.839                   | 2.091                         | 0.004                          |
 | Decision Tree Regressor                | 4.670                     | 150.574                  | 2.161                         | -0.598                         |
 | Stochastic Gradient Descent Regression | 4.26E+17                  | 2.00E+35                 | 652480033.3                   | -2.12E+33                      |
+
+We have chosen CatBoost Regressor as it performed the best against all of our metrics. Based on the Mean Absolute Error of this model, it will be able to predict the `offer_influence` with an average of $3.18 error for any given set of profile attributes and offer attributes.
 
 ### Model Implementation: Web Application
 
