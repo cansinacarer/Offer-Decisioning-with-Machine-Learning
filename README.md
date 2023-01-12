@@ -39,17 +39,38 @@ Below is a transposed sample from this dataset
 
 ## Modeling
 
-We have used offer attributes and customer profile attributes shown in the image above as independent variables and the offer influence as the dependent variable. The algorithms we have tested and their performances are shown below.
+We have used offer attributes and customer profile attributes shown in the image above as independent variables and the offer influence as the dependent variable. The algorithms we have tested and their performances are shown below. We have chosen CatBoost Regressor as it performed the best against all of our metrics. Based on the Mean Absolute Error of this model, it will be able to predict the `offer_influence` with an average of $3.18 error for any given set of profile attributes and offer attributes.
+
+| |Mean Absolute Error (MAE)|Mean Squared Error (MSE)|Root Mean Square Error (RMSE)|Explained Variance (R^2 Score)|
+|:----|:----|:----|:----|:----|
+|CatBoost Regressor|3.186|55.833|1.785|0.407|
+|Bayesian Ridge Regression|3.186|55.833|1.785|0.407|
+|Linear Regression|3.187|55.840|1.785|0.407|
+|Elastic Net Regression|3.230|56.228|1.797|0.403|
+|Gradient Boosting Regressor|3.243|63.045|1.801|0.331|
+|Light GBM Regressor|3.293|71.057|1.815|0.246|
+|Random Forest Regressor|3.711|78.179|1.926|0.170|
+|MLP Regressor|5.645|78.726|2.376|0.165|
+|XGBoost Regressor|3.423|87.035|1.850|0.076|
+|Support Vector Regressor|4.371|93.839|2.091|0.004|
+|Decision Tree Regressor|4.670|150.574|2.161|-0.598|
+|Stochastic Gradient Descent Regression|4.26E+17|2.00E+35|652480033.3|-2.12E+33|
 
 
-## Model Implementation: Web Application
+### Model Implementation: Web Application
+
+We have implemented the selected model in an offer decisioning web application. This application allows the user to input a customer profile details and the application shows the user the offer that has the highest predicted influence for that profile.
+
+This application is deployed at [https://offer-decisioning-starbucks.montreal.cansin.net](https://offer-decisioning-starbucks.montreal.cansin.net). You can see the code for this application in the `web-application` directory of this repository.
 
 A continuous deployment pipeline is set up to always have the version of the web application seen in this repository be running at this address:
 [https://offer-decisioning-starbucks.montreal.cansin.net/](https://offer-decisioning-starbucks.montreal.cansin.net/).
 
-## Conclusion
-
 ## Other Notes
+
+1. Please see the notebook file for the conclusions.
+
+2. This project is submitted in partial fulfillment of the Data Scientist Nanodegree Program from Udacity.
 
 ### Running the Web Application and the Notebook 
 
