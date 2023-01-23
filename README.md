@@ -6,7 +6,7 @@ Once every few days, Starbucks sends out an offer to users of the mobile app. An
 
 ## Problem Statement
 
-We are given three data files which contain simulated data that mimics customer behavior on the Starbucks rewards mobile app. Our task is to use the data to identify which customer which receive which offer.
+We are given three data files which contain simulated data that mimics customer behavior on the Starbucks rewards mobile app. Our task is to use the data to identify which customer should receive which offer.
 
 ## Methodology
 
@@ -58,6 +58,7 @@ The provided json files looked as below when first read with pandas:
 In the resulting dataset, each row also contains information derived from the event logs about the presented offer including when it is presented, when it is viewed, when it is expired, daily average amount the customer spent after viewing the offer, and how that compares to other periods.
 
 ### Data Preprocesing Result
+
 Below is a transposed sample from the aggregated dataset with variables derived from the tables above.
 
 ![offer-instance-clean](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/blob/main/img/presented-offers-clean.jpg?raw=true)
@@ -87,15 +88,15 @@ We have chosen CatBoost Regressor as it performed the best against all of our me
 
 We have implemented the selected model in an offer decisioning web application. This application allows the user to input a customer profile details and the application shows the user the offer that has the highest predicted influence for that profile.
 
-This application is deployed at [https://offer-decisioning-starbucks.montreal.cansin.net](https://offer-decisioning-starbucks.montreal.cansin.net). You can see the code for this application in the `web-application` directory of this repository.
+This application is deployed at [https://offer-decisioning-starbucks.montreal.cansin.net](https://offer-decisioning-starbucks.montreal.cansin.net). You can see the code for this application in the `web_app` directory of this repository.
 
 The deployed application is runs the latest version from this repository using a continuous deployment pipeline.
 
 ## Other Notes
 
-- Please see the notebook file for the steps of this analysis and the conclusions.
+-   Please see the notebook file for the steps of this analysis and the conclusions.
 
-- This project is submitted in partial fulfillment of the Data Scientist Nanodegree Program from Udacity.
+-   This project is submitted in partial fulfillment of the Data Scientist Nanodegree Program from Udacity.
 
 ### Running the Web Application and the Notebook
 
