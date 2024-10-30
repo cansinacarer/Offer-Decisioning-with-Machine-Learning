@@ -89,7 +89,7 @@ We have chosen CatBoost Regressor as it performed the best against all of our me
 
 We have implemented the selected model in an offer decisioning web application. This application allows the user to input a customer profile details and the application shows the user the offer that has the highest predicted influence for that profile.
 
-This application is deployed at [https://offer-decisioning-starbucks.montreal.cansin.net](https://offer-decisioning-starbucks.montreal.cansin.net). You can see the code for this application in the `web_app` directory of this repository.
+This application is deployed at [https://offer-decisioning-starbucks.apps.cansin.net](https://offer-decisioning-starbucks.apps.cansin.net). You can see the code for this application in the `web_app` directory of this repository.
 
 The deployed application is runs the latest version from this repository using a continuous deployment pipeline.
 
