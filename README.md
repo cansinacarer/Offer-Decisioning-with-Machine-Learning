@@ -1,4 +1,5 @@
 # Starbucks Offer Analysis
+[![Build & Deploy](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/actions/workflows/deploy.yml/badge.svg)](https://github.com/cansinacarer/Offer-Decisioning-with-Machine-Learning/actions/workflows/deploy.yml)
 
 ## Project Motivation
 
@@ -39,13 +40,13 @@ The provided json files looked as below when first read with pandas:
 | 5      | [web, email, mobile]         | 5          | 7        | bogo          | 9b98b8c7a33c4b65b9aebfe6a799e6d9 |
 | 5      | [web, email]                 | 20         | 10       | discount      | 0b1e1539f2cc45b7b9fa7c272da2e1d7 |
 
-| gender | age | id                               | became_member_on | income |
-| :----- | :-- | :------------------------------- | :--------------- | :----- |
-| M      | 44  | 1a6441a8ccd74a81a388841d357b8c0d | 20180108         | 67000  |
-| M      | 62  | 81e459ab24434db99f657b928338c88c | 20171111         | 91000  |
-| F      | 61  | fbb3c6ad80b04d3a94c666a2f08f2a2e | 20170916         | 96000  |
-| F      | 85  | 19446b361caa43de84c2aed517457a47 | 20160927         | 103000 |
-| O      | 42  | 8ead309bb7254edbab114c8837cd54b2 | 20170926         | 63000  |
+| gender | age  | id                               | became_member_on | income |
+| :----- | :--- | :------------------------------- | :--------------- | :----- |
+| M      | 44   | 1a6441a8ccd74a81a388841d357b8c0d | 20180108         | 67000  |
+| M      | 62   | 81e459ab24434db99f657b928338c88c | 20171111         | 91000  |
+| F      | 61   | fbb3c6ad80b04d3a94c666a2f08f2a2e | 20170916         | 96000  |
+| F      | 85   | 19446b361caa43de84c2aed517457a47 | 20160927         | 103000 |
+| O      | 42   | 8ead309bb7254edbab114c8837cd54b2 | 20170926         | 63000  |
 
 | person                           | event          | value                                            | time |
 | :------------------------------- | :------------- | :----------------------------------------------- | :--- |
